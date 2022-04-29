@@ -1,0 +1,17 @@
+sudo: required
+language:
+  - cpp
+
+script:
+  - nvm install v8.7.0
+  - npm install -g codecov
+  - npm install -g istanbul
+  - mkdir build
+  - cd build
+  - cmake ..
+  - make
+  - npm install
+  - ./cpp-tests
+  - npm run js-tests
+  - npm run coverage
+  - codecov
